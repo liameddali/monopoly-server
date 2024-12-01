@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.svg') }}">
+  <title>Monopoly - Dashboard - Account</title>
+</head>
+<body class="w-lvw h-lvh select-none">
+    <div class="w-full h-full gap-y-5 flex flex-col justify-center items-center bg-monopoly-board bg-no-repeat bg-cover bg-center">
+        <div class="bg-black/25 rounded-lg w-[250px] p-5 gap-y-4 flex flex-col">
+            <div class="text-black text-center bg-monopoly-green rounded-lg p-1 px-2 flex justify-around">
+                <p>{{username}}</p>
+                <p>|</p>
+                <p id="game_id" onclick="copyGameId()">{{game_id}}</p>
+            </div>
+            <div class="h-96 bg-monopoly-red rounded-lg p-1 px-2 py-2 gap-5 flex flex-col justify-center">
+                <a href="./create-or-join-a-game" class="bg-gray-500/25 hover:bg-gray-500/35 rounded-lg p-1 block text-white text-center">Quit the game</a>
+                <a href="./log-in" class="bg-gray-500/25 hover:bg-gray-500/35 rounded-lg p-1 block text-white text-center">Sign out</a>
+            </div>
+            <nav class="text-white text-center bg-black rounded-lg p-1 flex justify-around">
+                <a href="./dashboard-wallet">Wallet</a>
+                <p>|</p>
+                <a href="./dashboard-properties">Properties</a>
+                <p>|</p>
+                <a href="./dashboard-account">Account</a>
+            </nav>
+        </div>
+        {% include 'flash_messages.html' %}
+        {% include 'io_messages.html' %}
+    </div>
+    <script src="../static/scripts/copyGameId.js" defer></script>
+</body>
+</html>

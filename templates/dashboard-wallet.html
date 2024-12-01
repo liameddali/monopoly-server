@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.svg') }}">
+    <title>Monopoly - Dashboard - Wallet</title>
+    <style>
+        input[type='number'] {
+            /* Utiliser la propriété standard appearance */
+            appearance: textfield;
+
+            /* Pour Webkit (Chrome, Safari) */
+            -webkit-appearance: none;
+
+            /* Pour Gecko (Firefox) */
+            -moz-appearance: textfield;
+
+            /* Désactivation des spinners */
+            margin: 0;
+        }
+
+        /* Supprimer les boutons de contrôle internes de l'input de type number */
+        input[type='number']::-webkit-inner-spin-button,
+        input[type='number']::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+    </style>
+</head> 
+<body class="w-lvw h-lvh select-none">
+    <div class="w-full h-full gap-y-5 flex flex-col justify-center items-center bg-monopoly-board bg-no-repeat bg-cover bg-center">
+        <div class="bg-black/25 rounded-lg w-[250px] p-5 gap-y-4 flex flex-col">
+            <div class="text-black text-center bg-monopoly-green rounded-lg p-1 px-2 flex justify-around">
+                <p>{{username}}</p>
+                <p>|</p>
+                <p id="game_id" onclick="copyGameId()">{{game_id}}</p>
+            </div>
+            <div class="h-auto bg-monopoly-red rounded-lg p-1 px-2 py-2 flex flex-col gap-y-5 justify-center">
+                <p id="balance" class="bg-gray-500/25 rounded-lg p-1 block text-white text-center">{{balance}} $</p>
+                <form id="sendMoneyForm" action="{{ url_for('dashboard_wallet', redirect='send') }}" method="post" class="border border-dashed border-black rounded-lg flex flex-col gap-y-2 p-2">
+                    <label class="bg-gray-500/25 rounded-lg p-1 block text-white text-center">Send money</label>
+                    <select name="recipient_username" class="rounded-lg">
+                        {% if players == [] %}
+                            <option value="" disabled selected>No one join the game</option>
+                        {% else %}
+                            <option value="" disabled selected>Select the recipient</option>
+                            {% for player in players %}
+                                <option value="{{ player.username }}">{{ player.username }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    <input type="number" name="amount_send" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight text-center focus:outline-none focus:shadow-outline focus:placeholder-transparent" placeholder="Amount">
+                    <button type="submit" class="text-white text-center rounded-lg p-1 bg-gray-500/25 hover:bg-gray-500/35">Done</button>
+                </form>            
+                <form id="askMoneyForm" action="{{ url_for('dashboard_wallet', redirect='ask') }}" method="post" class="border border-dashed border-black rounded-lg flex flex-col gap-y-2 p-2">
+                    <label class="bg-gray-500/25 rounded-lg p-1 block text-white text-center">Ask for money</label>
+                    <select name="giver_username" class="rounded-lg">
+                        {% if players == [] %}
+                            <option value="" disabled selected>No one join the game</option>
+                        {% else %}
+                            <option value="" disabled selected>Select the giver</option>
+                            {% for player in players %}
+                                <option value="{{ player.username }}">{{ player.username }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>                    
+                    <input type="number" name="amount_asked" class="shadow appearance-none border rounded-lg w-full py-2 text-gray-700 leading-tight text-center focus:outline-none focus:shadow-outline focus:placeholder-transparent" placeholder="Amount">
+                    <button type="submit" class="text-white text-center rounded-lg p-1 bg-gray-500/25 hover:bg-gray-500/35">Done</button>
+                </form>
+            </div>
+            <nav class="text-white text-center bg-black rounded-lg p-1 flex justify-around">
+                <a href="./dashboard-wallet">Wallet</a>
+                <p>|</p>
+                <a href="./dashboard-properties">Properties</a>
+                <p>|</p>
+                <a href="./dashboard-account">Account</a>
+            </nav>
+        </div>
+        {% include 'flash_messages.html' %}
+        {% include 'io_messages.html' %}
+    </div>
+    <script src="../static/scripts/copyGameId.js" defer></script>
+</body>
+</html>

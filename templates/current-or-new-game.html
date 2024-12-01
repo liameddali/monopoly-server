@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.svg') }}">
+    <title>Monopoly - Current or New Game</title>
+</head>
+<body class="w-lvw h-lvh select-none">
+    <div class="w-full h-full gap-y-5 flex flex-col justify-center items-center bg-monopoly-board bg-no-repeat bg-cover bg-center">
+        <div class="bg-black/25 rounded-lg w-[250px] p-5 gap-y-4 flex flex-col">
+            <img src="{{ url_for('static', filename='images/logo-monopoly.svg') }}" alt="Logo">
+            <p class="text-black text-center bg-monopoly-green rounded-lg p-1">Hi {{username}} !</p>
+            <a href="./dashboard-wallet" class="text-white text-center bg-monopoly-red rounded-lg p-1 break-words whitespace-normal hover:scale-110">Continue with the current game : ID {{game_id}}</a>
+            <a href="./create-or-join-a-game" class="text-white text-center bg-monopoly-red rounded-lg p-1 hover:scale-110">Join / Create a game</a>
+            <a href="./log-out" class="text-white text-center bg-monopoly-red rounded-lg p-1 hover:scale-110">Disconnect</a>
+        </div>
+        {% include 'flash_messages.html' %}
+        <script src="{{ url_for('static', filename='scripts/messages-flash.js') }}"></script>
+    </div>
+</body>
+</html>
