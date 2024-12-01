@@ -1,1 +1,1 @@
-# monopoly-server
+# Monopoly Server
