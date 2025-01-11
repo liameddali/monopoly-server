@@ -1,21 +1,21 @@
 # Monopoly Server
 
-![Page de connexion](https://github.com/liameddali/monopoly-server/blob/main/images/login.png)
+![login](https://github.com/user-attachments/assets/9e17919b-de3f-4d07-80cc-afb2277a8795)
 *Page de connexion*
 
-![Page d'inscription](https://github.com/liameddali/monopoly-server/blob/main/images/sign-up.png)
+![sign-up](https://github.com/user-attachments/assets/613aa667-d11f-448a-b377-42605af19274)
 *Page d'inscription*
 
-![Jeu en cours ou nouveau jeu](https://github.com/liameddali/monopoly-server/blob/main/images/current-or-new-game.png)
+![current-or-new-game](https://github.com/user-attachments/assets/b6c056dc-8d85-4c53-a0e7-a1761297431e)
 *Jeu en cours ou nouveau jeu*
 
-![Rejoindre une partie](https://github.com/liameddali/monopoly-server/blob/main/images/join-a-game.png)
+![join-a-game](https://github.com/user-attachments/assets/9eb9793a-0375-4082-a4c0-fb63e6427ddf)
 *Rejoindre une partie*
 
-![Nouvelle partie](https://github.com/liameddali/monopoly-server/blob/main/images/new-game.png)
+![new-game](https://github.com/user-attachments/assets/dd533d74-c521-499e-afa7-bc6b9172cf63)
 *Nouvelle partie*
 
-![Tableau de bord - Portefeuille](https://github.com/liameddali/monopoly-server/blob/main/images/dashboard-wallet.png)
+![dashboard-wallet](https://github.com/user-attachments/assets/dff69b88-239a-4810-8421-359785f1a375)
 *Tableau de bord - Portefeuille*
 
 ---
