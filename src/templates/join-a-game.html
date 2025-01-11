@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.svg') }}">
+  <title>Monopoly - Join a Game</title>
+</head>
+<body class="w-lvw h-lvh select-none">
+  <div class="w-full h-full gap-y-5 flex flex-col justify-center items-center bg-monopoly-board bg-no-repeat bg-cover bg-center">
+    <div class="bg-black/25 rounded-lg w-[250px] p-5 gap-y-4 flex flex-col">
+      <img src="{{ url_for('static', filename='images/logo-monopoly.svg') }}" alt="Logo">
+        <p class="text-black text-center bg-monopoly-green rounded-lg p-1">Hi {{username}} !</p>
+        <form id="joinGameForm" method="post" action="{{ url_for('join_a_game') }}" class="bg-monopoly-red rounded-lg p-2 flex flex-col gap-y-2">
+            <label class="bg-gray-500/25 rounded-lg p-1 block text-white text-center">Join a game</label>
+            <input type="text" name="game_id" id="game_id" class="bg-white rounded-lg p-1 block text-black text-center select-all focus:placeholder-transparent" placeholder="Game ID">
+            <button type="submit" class="bg-gray-500/25 hover:bg-gray-500/35 rounded-lg p-1 block text-white text-center">Ok</button>
+        </form>
+        <a href="./create-a-game" class="text-white text-center bg-monopoly-red rounded-lg p-1 hover:scale-110">Create a game</a>
+        <a href="./log-out" class="text-white text-center bg-monopoly-red rounded-lg p-1 hover:scale-110">Disconnect</a>
+    </div>
+    {% include 'flash_messages.html' %}
+    {% include 'io_messages_playerJoinGame.html' %}
+</div>
+</body>
+</html>
