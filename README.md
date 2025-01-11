@@ -1,21 +1,21 @@
 # Monopoly Server
 
-<img src="https://github.com/user-attachments/assets/9e17919b-de3f-4d07-80cc-afb2277a8795" alt="Page de connexion" height="150px" width="150px">
+<img src="https://github.com/user-attachments/assets/9e17919b-de3f-4d07-80cc-afb2277a8795" alt="Page de connexion" height="150px" width="450px">
 *Page de connexion*
 
-<img src="https://github.com/user-attachments/assets/613aa667-d11f-448a-b377-42605af19274" alt="Page d'inscription" height="150px" width="150px">
+<img src="https://github.com/user-attachments/assets/613aa667-d11f-448a-b377-42605af19274" alt="Page d'inscription" height="150px" width="450px">
 *Page d'inscription*
 
-<img src="https://github.com/user-attachments/assets/b6c056dc-8d85-4c53-a0e7-a1761297431e" alt="Jeu en cours ou nouveau jeu" height="150px" width="150px">
+<img src="https://github.com/user-attachments/assets/b6c056dc-8d85-4c53-a0e7-a1761297431e" alt="Jeu en cours ou nouveau jeu" height="150px" width="450px">
 *Jeu en cours ou nouveau jeu*
 
-<img src="https://github.com/user-attachments/assets/9eb9793a-0375-4082-a4c0-fb63e6427ddf" alt="Rejoindre une partie" height="150px" width="150px">
+<img src="https://github.com/user-attachments/assets/9eb9793a-0375-4082-a4c0-fb63e6427ddf" alt="Rejoindre une partie" height="150px" width="450px">
 *Rejoindre une partie*
 
-<img src="https://github.com/user-attachments/assets/dd533d74-c521-499e-afa7-bc6b9172cf63" alt="Nouvelle partie" height="150px" width="150px">
+<img src="https://github.com/user-attachments/assets/dd533d74-c521-499e-afa7-bc6b9172cf63" alt="Nouvelle partie" height="150px" width="450px">
 *Nouvelle partie*
 
-<img src="https://github.com/user-attachments/assets/dff69b88-239a-4810-8421-359785f1a375" alt="Tableau de bord - Portefeuille" height="150px" width="150px">
+<img src="https://github.com/user-attachments/assets/dff69b88-239a-4810-8421-359785f1a375" alt="Tableau de bord - Portefeuille" height="150px" width="450px">
 *Tableau de bord - Portefeuille*
 
 ---
