@@ -36,9 +36,10 @@ class Property(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     level = db.Column(db.Integer, default=0, nullable=False)
     game_id = db.Column(db.String(5), nullable=False)
+    image_filename = db.Column(db.String(100), nullable=False)  # New column for image filename
 
     def __repr__(self):
-        return f"<Property {self.name} Owner: {self.owner_id} Level: {self.level}>"
+        return f"<Property {self.name} Owner: {self.owner_id} Level: {self.level} Image: {self.image_filename}>"
 
 with app.app_context():
     db.create_all()
@@ -85,9 +86,45 @@ def create_a_game():
             user.current_game_id = new_game_id
             user.balance = 2000
             db.session.commit()
-        flash(f'You created the game {new_game_id} and joined it !', 'info')
-        return redirect ('/dashboard-wallet')
-            
+
+        # Create properties for the new game
+        properties_data = [
+            {"name": "Mediterranean Avenue", "image": "mediterranean_avenue.svg"},
+            {"name": "Baltic Avenue", "image": "baltic_avenue.svg"},
+            {"name": "Oriental Avenue", "image": "oriental_avenue.svg"},
+            {"name": "Vermont Avenue", "image": "vermont_avenue.svg"},
+            {"name": "Connecticut Avenue", "image": "connecticut_avenue.svg"},
+            {"name": "St. Charles Place", "image": "st_charles_place.svg"},
+            {"name": "States Avenue", "image": "states_avenue.svg"},
+            {"name": "Virginia Avenue", "image": "virginia_avenue.svg"},
+            {"name": "St. James Place", "image": "st_james_place.svg"},
+            {"name": "Tennessee Avenue", "image": "tennessee_avenue.svg"},
+            {"name": "New York Avenue", "image": "new_york_avenue.svg"},
+            {"name": "Kentucky Avenue", "image": "kentucky_avenue.svg"},
+            {"name": "Indiana Avenue", "image": "indiana_avenue.svg"},
+            {"name": "Illinois Avenue", "image": "illinois_avenue.svg"},
+            {"name": "Atlantic Avenue", "image": "atlantic_avenue.svg"},
+            {"name": "Ventnor Avenue", "image": "ventnor_avenue.svg"},
+            {"name": "Marvin Gardens", "image": "marvin_gardens.svg"},
+            {"name": "Pacific Avenue", "image": "pacific_avenue.svg"},
+            {"name": "North Carolina Avenue", "image": "north_carolina_avenue.svg"},
+            {"name": "Pennsylvania Avenue", "image": "pennsylvania_avenue.svg"},
+            {"name": "Park Place", "image": "blue_1.svg"},
+            {"name": "Boardwalk", "image": "boardwalk.svg"}
+        ]
+
+        for property_data in properties_data:
+            new_property = Property(
+                name=property_data["name"],
+                game_id=new_game_id,
+                image_filename=property_data["image"]
+            )
+            db.session.add(new_property)
+        db.session.commit()
+
+        flash(f'You created the game {new_game_id} and joined it! Properties have been initialized.', 'info')
+        return redirect('/dashboard-wallet')
+
     return render_template('create-a-game.html', username=username, new_game_id=new_game_id)
 
 @app.route('/create-or-join-a-game')
@@ -125,10 +162,15 @@ def dashboard_properties():
     properties = {
         prop.name: {
             'owner': User.query.get(prop.owner_id).username if prop.owner_id else 'Bank',
-            'level': prop.level
+            'level': prop.level,
+            'image': prop.image_filename
         }
         for prop in properties_query
     }
+
+    print(properties)
+    if not properties:
+        flash(f'No properties found for this game. {properties} ', 'info')
 
     return render_template('dashboard-properties.html', username=username, game_id=idgame, properties=properties)
 

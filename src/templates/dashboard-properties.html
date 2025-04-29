@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.svg') }}">
   <title>Monopoly - Dashboard - Properties</title>
 </head>
@@ -17,25 +18,64 @@
             </div>
             <div class="h-96 bg-monopoly-red rounded-lg p-2">
                 <div class="max-h-full gap-2 grid grid-cols-2 overflow-auto scrollbar-none">
-                    {% for property, details in properties.items() %}
-                        <div class="bg-red-700 rounded-lg p-1 w-auto flex flex-col">
-                            <img src="{{ url_for('static', filename='images/properties/' + property + '.svg') }}" alt="{{ property }}">
-                            <p>{{ details.owner }}</p>
-                            {% if details.level == 0 %}
-                                <p>houses and hotel : 0</p>
-                            {% elif details.level == 1 %}
-                                <p>houses and hotel : 1</p>
-                            {% elif details.level == 2 %}
-                                <p>houses and hotel : 2</p>
-                            {% elif details.level == 3 %}
-                                <p>houses and hotel : 3</p>
-                            {% elif details.level == 4 %}
-                                <p>houses and hotel : 4</p>
-                            {% elif details.level == 5 %}
-                                <p>houses and hotel : 5</p>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+                    {% if properties %}
+                        {% for property, details in properties.items() %}
+                            <div class="bg-red-700 rounded-lg p-1 w-auto flex flex-col">
+                                <!-- Use the correct image filename -->
+                                <img src="{{ url_for('static', filename='images/properties/' + details.image) }}" alt="{{ property }}">
+                                <p>{{ details.owner }}</p>
+                                <!-- Simplify level display -->
+                                <p>houses and hotel: {{ details.level }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Fallback message if no properties exist -->
+                        <p class="text-white text-center">No properties available for this game.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="carousel rounded-box w-64">
+                <div class="carousel-item w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
+                    class="w-full"
+                    alt="Tailwind CSS Carousel component" />
+                </div>
+                <div class="carousel-item w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
+                    class="w-full"
+                    alt="Tailwind CSS Carousel component" />
+                </div>
+                <div class="carousel-item w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
+                    class="w-full"
+                    alt="Tailwind CSS Carousel component" />
+                </div>
+                <div class="carousel-item w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp"
+                    class="w-full"
+                    alt="Tailwind CSS Carousel component" />
+                </div>
+                <div class="carousel-item w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
+                    class="w-full"
+                    alt="Tailwind CSS Carousel component" />
+                </div>
+                <div class="carousel-item w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
+                    class="w-full"
+                    alt="Tailwind CSS Carousel component" />
+                </div>
+                <div class="carousel-item w-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
+                    class="w-full"
+                    alt="Tailwind CSS Carousel component" />
                 </div>
             </div>
             <nav class="text-white text-center bg-black rounded-lg p-1 flex justify-around">

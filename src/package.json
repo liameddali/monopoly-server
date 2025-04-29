@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@material-tailwind/react": "^2.1.10",
+    "tailwind-scrollbar-hide": "^2.0.0"
+  }
+}

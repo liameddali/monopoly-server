@@ -1,0 +1,7 @@
+.carousel {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    display: inline-flex;
+    overflow-x: scroll;
+}
