@@ -30,6 +30,16 @@ class User(db.Model):
     def __repr__(self):
         return f"<User {self.id} {self.username} {self.password} {self.game_in_progress} {self.current_game_id} {self.balance}>"
 
+class Property(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    level = db.Column(db.Integer, default=0, nullable=False)
+    game_id = db.Column(db.String(5), nullable=False)
+
+    def __repr__(self):
+        return f"<Property {self.name} Owner: {self.owner_id} Level: {self.level}>"
+
 with app.app_context():
     db.create_all()
 
@@ -109,7 +119,18 @@ def dashboard_properties():
     user = User.query.filter_by(user_cookie=user_cookie).first()
     username = user.username
     idgame = user.current_game_id
-    return render_template('dashboard-properties.html', username=username, game_id=idgame)
+
+    # Assuming you have a Property model with fields: name, owner_id, level, and game_id
+    properties_query = Property.query.filter_by(game_id=idgame).all()
+    properties = {
+        prop.name: {
+            'owner': User.query.get(prop.owner_id).username if prop.owner_id else 'Bank',
+            'level': prop.level
+        }
+        for prop in properties_query
+    }
+
+    return render_template('dashboard-properties.html', username=username, game_id=idgame, properties=properties)
 
 @app.route('/dashboard-wallet', methods=['GET', 'POST'])
 def dashboard_wallet():
